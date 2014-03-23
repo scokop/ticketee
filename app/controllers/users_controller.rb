@@ -26,17 +26,18 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       flash[:notice] = "Profile has been updated."
 
-      redirect_to user_path
+      redirect_to @user
     else
       flash[:alert] = "Profile has not been updated."
 
-      render action: "edit"
+      render "edit"
     end
   end
 
   private
   def user_params
     params.require(:user).permit(:name,
+                                 :email,
                                  :password,
                                  :password_confirmation)
   end
