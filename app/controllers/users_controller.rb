@@ -22,7 +22,7 @@ class UsersController < ApplicationController
   def edit
   end
 
-   def update
+  def update
     if @user.update(user_params)
       flash[:notice] = "Profile has been updated."
 
