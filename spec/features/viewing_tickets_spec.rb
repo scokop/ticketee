@@ -10,6 +10,7 @@ feature "Viewing tickets" do
                        project: textmate_2,
                        title: "Make it shiny!",
                        description: "Gradients! Starbursts! Oh my!")
+    define_permission!(user, "view", textmate_2)
     ticket.update(user: user)
 
     internet_explorer = FactoryGirl.create(:project,
@@ -18,7 +19,9 @@ feature "Viewing tickets" do
                        project: internet_explorer,
                        title: "Standards compliance",
                        description: "Isn't a joke.")
+    define_permission!(user, "view", internet_explorer)
 
+    sign_in_as!(user)
     visit '/'
   end
 
