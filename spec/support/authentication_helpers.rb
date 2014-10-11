@@ -1,4 +1,11 @@
 module AuthenticationHelpers
+
+  def define_permission!(user,action,thing) 
+    Permission.create!(user: user, 
+                       action: action,
+                       thing: thing)
+  end
+
   def sign_in_as!(user)
     visit '/signin'
     fill_in "Name", with: user.name
@@ -13,6 +20,7 @@ module AuthenticationHelpers
 end
 
 RSpec.configure do |c|
+  c.include AuthenticationHelpers
   c.include AuthenticationHelpers, type: :feature
   c.include AuthenticationHelpers, type: :controller
 end
