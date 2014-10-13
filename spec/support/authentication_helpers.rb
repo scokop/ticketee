@@ -19,6 +19,10 @@ end
     session[:user_id] = user.id
   end
 
+  def check_permission_box(permission, object)
+    check "permissions_#{object.id}_#{permission}"
+  end
+
 RSpec.configure do |c|
   c.include AuthenticationHelpers
   c.include AuthenticationHelpers, type: :feature
