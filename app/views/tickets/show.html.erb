@@ -10,7 +10,7 @@
   <% end %>
       <%= simple_format(@ticket.description) %>
       <div id="author">Created by <%= @ticket.user.email %></div>
-
+      <%= render @ticket.state if @ticket.state %>
       <% if @ticket.assets.present? %>
         <h3>Attached Files</h3>
       <div class="assets">
